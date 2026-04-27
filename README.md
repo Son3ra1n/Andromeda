@@ -81,7 +81,7 @@
 ## 🚀 Installation
 
 ### Requirements
-- iOS 15.0 or later
+- **iOS 15.0 - 17.0** (TrollStore supported versions)
 - [TrollStore](https://github.com/opa334/TrollStore) installed on your device
 
 ### Steps
