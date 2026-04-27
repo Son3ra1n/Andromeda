@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by Constantin Clerc on 10/12/2023.
+//  Developed by son3ra1n.
 //
 
 import SwiftUI
@@ -34,12 +34,12 @@ struct ContentView: View {
                     Label("Cleaner", systemImage: "trash.fill")
                 }
                 .tag(4)
-                .animation(.easeInOut)
             SuperviseView()
                 .tabItem {
-                    Label("Superviser", systemImage: "checkmark.seal.fill")
+                    Label("Supervise", systemImage: "checkmark.seal.fill")
                 }
                 .tag(5)
         }
+        .tint(.indigo)
     }
 }

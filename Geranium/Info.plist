@@ -2,53 +2,53 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Andromeda</string>
+	<key>CFBundleExecutable</key>
+	<string>Geranium</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.son3ra1n.andromeda</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Andromeda</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.5.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>15.0</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>audio</string>
+		<string>processing</string>
+	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Andromeda needs your location for simulation.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Andromeda needs your location for simulation.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Andromeda needs your location for simulation.</string>
 	<key>CFBundleIcons</key>
 	<dict>
-		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>Beta</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Beta</string>
-				</array>
-			</dict>
-			<key>Bouquet</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Bouquet</string>
-				</array>
-			</dict>
-			<key>Flore</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Flore</string>
-				</array>
-			</dict>
-		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>AppIcon</string>
 			</array>
-			<key>CFBundleIconName</key>
-			<string></string>
-			<key>UIPrerenderedIcon</key>
-			<false/>
-		</dict>
-		<key>UINewsstandIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string></string>
-			</array>
-			<key>UINewsstandBindingEdge</key>
-			<string>UINewsstandBindingEdgeLeft</string>
-			<key>UINewsstandBindingType</key>
-			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
 </dict>

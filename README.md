@@ -1,99 +1,148 @@
-<center>
-  
-
-
 <div align="center">
-   <p>
-      <img src="https://github.com/c22dev/Geranium/assets/102235607/0feaa3eb-2c27-4cc0-9fa8-704db9f0a40f" width=100px>
-   </p>
-   <h1> Geranium </h1>
-      <p>LocSim, Daemon Manager, Cleaner and Superviser for TrollStore</p>
-      <img src="https://github.com/c22dev/Geranium/assets/102235607/ea95158f-1101-496b-b868-c3901db97543" width=150px>
+
+<img src="https://raw.githubusercontent.com/son3ra1n/Andromeda/main/Andromeda/Assets.xcassets/AppIcon.appiconset/andromeda_1024.png" width="150" style="border-radius: 32px;" />
+
+# Andromeda
+### The Ultimate iOS Utility — by son3ra1n
+
+[![iOS](https://img.shields.io/badge/iOS-15.0%2B-indigo.svg?style=for-the-badge&logo=apple)](https://github.com/son3ra1n/Andromeda)
+[![TrollStore](https://img.shields.io/badge/Requires-TrollStore-purple.svg?style=for-the-badge)](https://github.com/opa334/TrollStore)
+[![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg?style=for-the-badge)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-2.5.0-green.svg?style=for-the-badge)](https://github.com/son3ra1n/Andromeda/releases)
+
+**Andromeda** is a powerful, modern iOS utility app featuring location simulation, system cleaning, daemon management, and much more — all wrapped in a stunning glassmorphism UI.
+
 </div>
 
-<h6 align="center"> by c22dev </h6>
+---
 
-## Installation
-To install Geranium, you must have [TrollStore](https://github.com/opa334/TrollStore) 1.3 or later, and a device on iOS 15 or later (if TrollStore supports it). Download the latest release from the release tab, and open it in TrollStore. Then, follow the setup process !
+## ✨ Features
 
-## Features
-- **Simulate fake locations + bookmarks**
-<img src="https://github.com/c22dev/Geranium/assets/102235607/a42ace92-028f-482f-9a66-6c4295a7fcba" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/c45d3553-1c5b-418b-b836-69d47330d489" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/bcd7f1bf-e684-4eee-964e-449aeae7f5fa" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/35a8c0c9-50cd-484b-bfd4-0290c0c50714" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/557b7da6-a181-4b2f-80a1-3e84f79b144f" width=150px>
+### 🌍 LocSim — Advanced Location Simulator
+- **Realistic Route Simulation** with human-like movement (natural jitter, realistic speed)
+- **Multiple Route Options** — choose between fastest, shortest, and alternate routes
+- **Background Simulation** — keep simulating even when the app is minimized
+- **Address Search** — jump to any location by name
+- **Bookmarks** — save and revisit your favorite locations
+- **Altitude Control** — set precise altitude values
+- **Map Tap to Simulate** — just tap anywhere on the map
 
+### 🧹 Cleaner
+- Clean system junk, caches, and temp files
+- Configurable minimum file size filter
+- Safe Mode for iOS 15 compatibility
+- Real-time cleaning progress
 
+### 🚩 Daemons Manager
+- Enable / Disable system daemons
+- Comprehensive daemon listing
+- Safe restart via Respring
 
-You can also import your old bookmarks from Mika's LocSim (by going into bookmarks tab), and save new bookmarks from Apple Maps !
+### ✅ Supervise
+- System supervision utilities
+- Device oversight tools
 
-- **Clean your iDevice like never before**
+### ⏳ ByeTime
+- Completely disable Screen Time (iCloud or not)
 
-<img src="https://github.com/c22dev/Geranium/assets/102235607/dc1d1818-8248-4c7a-95d7-615b00f280a4" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/a187c43b-38fd-4a91-a7b2-194de9bab67a" width=150px>
+---
 
-Tired of the "Other" category taking up all of your space on your iDevice, well, you found the solution ! Some users have cleaned more than 16Gb of storage with this tool !
-Please note that those screenshots aren't accurate because they were took on a simulator that didn't have the cleaned directories. Calculated sizes aren't always accurate.
+## 📱 Screenshots
 
+> *Coming soon — contribute by submitting screenshots in Issues!*
 
-- **Manage daemons**
+---
 
-<img src="https://github.com/c22dev/Geranium/assets/102235607/977b1592-be87-42b1-84ad-5a9f6408279c" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/6ad3858d-36fc-415d-bae7-8624e19d178d" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/fd79e6cf-cc8b-44bc-8b7b-d88c2718d775" width=150px>
-<img src="https://github.com/c22dev/Geranium/assets/102235607/408fcfcb-8abd-4d1c-bedc-01e1a8051127" width=150px>
+## 🚀 Installation
 
+### Requirements
+- iOS 15.0 or later
+- [TrollStore](https://github.com/opa334/TrollStore) installed on your device
 
-Not using HomeKit and other Apple stuff, and want to optimize your phone performances to the best ? Here you can choose what you want to use !
+### Steps
 
-- **Disable ScreenTime**
-<img src="https://github.com/c22dev/Geranium/assets/102235607/d6aeb889-6d32-4923-a8ff-c43db7b37fbb" width=150px>
+1. Download the latest `Andromeda.tipa` from the [**Releases**](https://github.com/son3ra1n/Andromeda/releases) page.
+2. Open **TrollStore** on your iPhone.
+3. Tap **+** and select the downloaded `Andromeda.tipa` file.
+4. Tap **Install**.
+5. Launch **Andromeda** from your home screen. 🌌
 
-Forgot your screentime password ? Here you can say goodbye to Screen Time on your iOS device ! It also works with iCloud ScreenTimes. 
-Disclaimer : don't use this if your parents manage your Screen Time, if you get caught it would probably make it worse for you. I am not responsible in case you get told off.
+---
 
-- **Supervise your device**
-<img src="https://github.com/c22dev/Geranium/assets/102235607/415e4de8-b701-4046-914f-38c44671f8da" width=150px>
+## 🛠 Building from Source
 
-Want to supervise your device with a custom organization name but don't have a computer, here you are ! We also have a great collection of supervised profiles.
-## Build Instructions
-Requirements : A Mac having Xcode installed (it can also be a Hackintosh).
-1. Clone this repository (make sure you don't download it as zip but clone it!):
-   ```git clone https://github.com/c22dev/Geranium/```
-2. [Install Theos and it's requirements](https://theos.dev/docs/installation-macos)
-4. Ensure you have the [iPhoneOS14.5.sdk SDK](https://github.com/theos/sdks/tree/master/iPhoneOS14.5.sdk) installed
-5. Run ```./ipabuild.sh```
-6. Done ! Your `tipa` file will be located in `build` directory.
+```bash
+# Clone the repository
+git clone https://github.com/son3ra1n/Andromeda.git
+cd Andromeda
 
-If you have any issue with building the app, contact me on Discord, or use the commit labeled to latest release.
+# Open in Xcode
+open Geranium.xcodeproj
 
-## Contributing
-If you are contributing for the app itself, the instructions bellow doesn't apply to you.
-### Misc
-Feel free to open a Pull Request on this Github, but please note I won't merge any typo change (I will change it by myself).
-### Translations
-If you want to submit a new translation, contact me on Discord.
-If it already exists, feel free to edit it !
-### Icon
-You can use the icon.sketch file. Please send an icon in the 1024x1024 resolution, and don't round the borders.
+# Build for your device (requires macOS + Xcode 15+)
+# Set scheme to "Geranium" and target to a generic iOS device
+```
 
-## Credits
-### Code-wise
-- [BomberFish](https://github.com/bomberfish) & [Fiore](https://github.com/donato-fiore) for their amazing work in daemon listing - And thanks bomberfish for those amazing memes
-- [sourcelocation](https://github.com/sourcelocation) for his beautiful SwiftUI extensions and functions, helped me a lot ! - My source of information in icon and video editing !
-- [haxi0](https://github.com/haxi0) for his Welcome Page code, copied the part for the disabling. - Always funny
-- [acg7878](https://github.com/acg7878) for altitude and China coordinates support in LocSim
-### Translators
-- [CySxL](https://twitter.com/CySxL) - 🇹🇼 Chinese (Traditional) - Here from the beginning, even if on iOS 14, thanks !
-- [Defflix](https://twitter.com/Defflix19) - 🇨🇿/🇸🇰 Czech & Slovak - But also one of my greatest friend in the jailbreak community :)
-- [w0wbox](https://twitter.com/w0wbox) - 🇪🇸 Spanish (Latin America) - Also bug hunter
-- [LeonardoIz](https://twitter.com/leonardoizzo_) - 🇪🇸 Spanish / 🇮🇹 Italian / Catalan - Casually speak 3 languages
-- [Loy64](https://twitter.com/loy64_) - 🇦🇱 Albanian / 🇮🇹 Italian - Answers faster than light
-- [Phuc Do](https://twitter.com/dobabaophuc) - 🇻🇳 Vietnamese - But also an amazing icon designer !
-- [Speedyfriend67](https://twitter.com/speedyfriend67) - 🇰🇷 Korean - Actually speedrunned the translation
-- [Spy_G](https://twitter.com/spy_g_) - 🇸🇪 Swedish - Funny nickname
-- [Straight Tamago](https://twitter.com/straight_tamago) - 🇯🇵 Japenese - Lovely friend that always helps in code !
-- [ting0441](https://twitter.com/Ting2021) - 🇨🇳 Chinese (Simplified) - UI Bug Reporter
-- [W$D$B](https://twitter.com/Alz971) - 🇮🇹 Italian - First to accomplish 100% in translation
-- [yyyywaiwai](https://twitter.com/yyyyyy_public) - 🇯🇵 Japenese - Reviewer but also filled the gaps !
+> **Note:** The app requires proper entitlements to function. Use [TrollStore](https://github.com/opa334/TrollStore) or a jailbroken device for full functionality.
+
+---
+
+## 🌐 Language Support
+
+| Language | Status |
+|----------|--------|
+| 🇬🇧 English | ✅ Full Support |
+| 🇹🇷 Turkish (Türkçe) | ✅ Full Support |
+| 🇫🇷 French | ✅ Community |
+| 🇯🇵 Japanese | ✅ Community |
+| 🇪🇸 Spanish | ✅ Community |
+| 🇰🇷 Korean | ✅ Community |
+| 🇷🇺 Russian | ✅ Community |
+| 🇨🇳 Chinese (S/T) | ✅ Community |
+
+Want to add your language? Submit a PR! 🙌
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📜 Acknowledgments
+
+Andromeda was **inspired by and built upon** the excellent work of:
+
+| Project | Author | Contribution |
+|---------|--------|-------------|
+| [Geranium](https://github.com/c22dev/Geranium) | [c22dev](https://github.com/c22dev) | Original project & core architecture |
+| [Geranium](https://github.com/BomberFish/Geranium) | [BomberFish](https://github.com/BomberFish) | Daemon listing |
+
+> Andromeda is not affiliated with the original Geranium project. It is an independent fork with significant enhancements.
+
+---
+
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0** — see the [LICENSE](LICENSE) file for details.
+
+In short: you are free to use, modify, and distribute this code, but any derivative work must also be open source under the same license and give proper credit.
+
+---
+
+<div align="center">
+
+Made with ❤️ and 🌌 by **son3ra1n**
+
+*"Reach for the stars."*
+
+⭐ **Star this repo if you find it useful!**
+
+</div>

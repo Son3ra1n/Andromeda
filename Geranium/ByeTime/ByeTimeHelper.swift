@@ -1,8 +1,8 @@
 //
 //  ByeTimeHelper.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by cclerc on 29.12.23.
+//  Developed by son3ra1n.
 //
 
 import Foundation

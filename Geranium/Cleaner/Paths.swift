@@ -1,8 +1,8 @@
 //
 //  Paths.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by cclerc on 22.12.23.
+//  Developed by son3ra1n.
 //
 
 import Foundation

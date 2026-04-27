@@ -1,10 +1,10 @@
 //
 //  WelcomeView.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by cclerc on 19.12.23.
+//  Developed by son3ra1n.
 //
-// credit to haxi0
+
 
 import SwiftUI
 
@@ -16,7 +16,7 @@ struct WelcomeView: View {
     var body: some View {
         List {
             Section(header: Text("Setup")) {
-                Text("Welcome to Geranium, a toolbox for TrollStore that allows you to disable some daemons, simulate your location, clean your phone's storage and other. We need to configure a few things before you can use the app. This will only take a minute. You will still be able to change the settings later.")
+                Text("Welcome to Andromeda, a toolbox for TrollStore that allows you to disable some daemons, simulate your location, clean your phone's storage and other. Developed by son3ra1n.")
             }
             if getDeviceCode() == "iPhone8,4" {
                 Section(header: Text("Hi ! SE 1 User")) {

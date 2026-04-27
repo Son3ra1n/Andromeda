@@ -1,8 +1,8 @@
 //
 //  NotifHelp.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by Constantin Clerc on 22.02.2024.
+//  Developed by son3ra1n.
 //
 
 import SwiftUI

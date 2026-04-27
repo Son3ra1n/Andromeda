@@ -1,8 +1,8 @@
 //
 //  CustomPaths.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by cclerc on 15.01.24.
+//  Developed by son3ra1n.
 //
 
 import SwiftUI

@@ -1,6 +1,6 @@
 //
 // CleanerView.swift
-// Geranium
+// Andromeda
 // Created by Constantin Clerc on 10/12/2023.
 
 import SwiftUI

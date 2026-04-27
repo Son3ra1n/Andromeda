@@ -1,16 +1,17 @@
-//
-//  LocSimView.swift
-//  Geranium
-//
-//  Created by cclerc on 21.12.23.
+//  Andromeda LocSim
+//  Created by son3ra1n.
+//  Enhanced version of Geranium.
+//  Developed by son3ra1n.
 //
 
 import SwiftUI
 import CoreLocation
+import MapKit
 import AlertKit
 
 struct LocSimView: View {
     @StateObject private var appSettings = AppSettings()
+    @StateObject private var routeSimulator = RouteSimulator()
     
     @State private var locationManager = CLLocationManager()
     @State private var lat: Double = 0.0
@@ -18,6 +19,12 @@ struct LocSimView: View {
     @State private var altitude: String = "0.0"
     @State private var tappedCoordinate: EquatableCoordinate? = nil
     @State private var bookmarkSheetTggle: Bool = false
+    @State private var showRouteSheet: Bool = false
+    @State private var showSearchBar: Bool = false
+    @State private var searchText: String = ""
+    @State private var searchResults: [MKMapItem] = []
+    @State private var isSearching: Bool = false
+    @State private var mapRegion: MKCoordinateRegion? = nil
     var body: some View {
             if #available(iOS 16.0, *) {
                 NavigationStack {
@@ -31,53 +38,128 @@ struct LocSimView: View {
         }
     @ViewBuilder
         private func LocSimMainView() -> some View {
-            VStack {
-                CustomMapView(tappedCoordinate: $tappedCoordinate)
+            ZStack(alignment: .topTrailing) {
+                // MARK: - Main Map
+                CustomMapView(tappedCoordinate: $tappedCoordinate, moveToRegion: $mapRegion, routePolyline: routeSimulator.routePolyline, allRoutePolylines: routeSimulator.allRoutePolylines, selectedRouteIndex: routeSimulator.selectedRouteIndex, movingPosition: routeSimulator.currentPosition)
                     .onAppear {
                         CLLocationManager().requestAlwaysAuthorization()
                     }
-            }
-            .ignoresSafeArea(.keyboard)
-        .onAppear {
-            LocationModel().requestAuthorisation()
-        }
-        .onChange(of: tappedCoordinate) { newValue in
-            if let coordinate = newValue {
-                let altitudeValue = Double(altitude) ?? 0.0
-                startSimulation(at: coordinate.coordinate, altitude: altitudeValue)
-            }
-        }
-        .toolbar{
-            ToolbarItem(placement: .navigationBarLeading) {
-                Text("LocSim")
-                    .font(.title2)
-                    .bold()
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    UIApplication.shared.TextFieldAlert(
-                        title: "Enter Coordinates",
-                        message: "The location will be simulated on device\nPro tip: Press wherever on the map to move there.",
-                        textFieldPlaceHolder: "Latitude",
-                        secondTextFieldPlaceHolder: "Longitude"
-                    ) { latText, longText in
-                        if let latDouble = Double(latText ?? ""), let longDouble = Double(longText ?? "") {
-                            // Standardize the use of the startSimulation function.
-                            let gcjCoordinate = CLLocationCoordinate2D(latitude: latDouble, longitude: longDouble)
-                            let altitudeValue = Double(altitude) ?? 0.0
-                            startSimulation(at: gcjCoordinate, altitude: altitudeValue)
-                        } else {
-                            UIApplication.shared.alert(body: "Those are invalid coordinates mate !")
+                    .ignoresSafeArea()
+                
+                // MARK: - Address Search Overlay (Top)
+                if showSearchBar {
+                    VStack(spacing: 0) {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                            TextField("Search address...", text: $searchText, onCommit: {
+                                searchAddress()
+                            })
+                            .textFieldStyle(PlainTextFieldStyle())
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            
+                            if isSearching {
+                                ProgressView()
+                                    .scaleEffect(0.8)
+                            }
+                            
+                            if !searchText.isEmpty {
+                                Button(action: {
+                                    searchText = ""
+                                    searchResults = []
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            
+                            Button(action: {
+                                withAnimation {
+                                    showSearchBar = false
+                                    searchText = ""
+                                    searchResults = []
+                                }
+                            }) {
+                                Text("Cancel")
+                                    .font(.subheadline)
+                            }
+                        }
+                        .padding(10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(UIColor.systemBackground))
+                                .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 4)
+                        )
+                        .padding(.horizontal, 12)
+                        .padding(.top, 8)
+                        
+                        // Search Results List
+                        if !searchResults.isEmpty {
+                            ScrollView {
+                                VStack(spacing: 0) {
+                                    ForEach(searchResults, id: \.self) { item in
+                                        Button(action: {
+                                            selectSearchResult(item)
+                                        }) {
+                                            HStack {
+                                                Image(systemName: "mappin.circle.fill")
+                                                    .foregroundColor(.red)
+                                                    .font(.title3)
+                                                VStack(alignment: .leading, spacing: 2) {
+                                                    Text(item.name ?? "Unknown")
+                                                        .font(.subheadline)
+                                                        .fontWeight(.medium)
+                                                        .foregroundColor(.primary)
+                                                    if let address = item.placemark.title {
+                                                        Text(address)
+                                                            .font(.caption)
+                                                            .foregroundColor(.secondary)
+                                                            .lineLimit(1)
+                                                    }
+                                                }
+                                                Spacer()
+                                            }
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 8)
+                                        }
+                                        Divider()
+                                            .padding(.leading, 44)
+                                    }
+                                }
+                            }
+                            .frame(maxHeight: 250)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(UIColor.systemBackground))
+                                    .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 3)
+                            )
+                            .padding(.horizontal, 12)
+                            .padding(.top, 4)
                         }
                     }
-                }) {
-                    Image(systemName: "mappin")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .zIndex(1)
                 }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
+
+            
+            // MARK: - Floating Controls (Replaces unstable Toolbar)
+            VStack(spacing: 12) {
+                // Address Search Button
+                Button(action: {
+                    showSearchBar.toggle()
+                }) {
+                    controlIcon(systemName: "magnifyingglass")
+                }
+                
+                // Route Simulation Button
+                Button(action: {
+                    showRouteSheet.toggle()
+                }) {
+                    controlIcon(systemName: "car.fill")
+                }
+                
+                // Altitude Button
                 Button(action: {
                     UIApplication.shared.TextFieldAlert(
                         title: "Set Altitude",
@@ -95,26 +177,12 @@ struct LocSimView: View {
                         }
                     }
                 }) {
-                    Image(systemName: "mountain.2.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24)
+                    controlIcon(systemName: "mountain.2.fill")
                 }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
+                
+                // Stop Sim Button
                 Button(action: {
-                    if appSettings.locSimMultipleAttempts {
-                        var countdown = appSettings.locSimAttemptNB
-                        DispatchQueue.global().async {
-                            while countdown > 0 {
-                                LocSimManager.stopLocSim()
-                                countdown -= 1
-                            }
-                        }
-                    }
-                    else {
-                        LocSimManager.stopLocSim()
-                    }
+                    LocSimManager.stopLocSim()
                     AlertKitAPI.present(
                         title: "Stopped !",
                         icon: .done,
@@ -122,25 +190,17 @@ struct LocSimView: View {
                         haptic: .success
                     )
                 }) {
-                    Image(systemName: "location.slash")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24)
+                    controlIcon(systemName: "location.slash.fill", color: .red)
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    bookmarkSheetTggle.toggle()
-                }) {
-                    Image(systemName: "bookmark")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24)
-                }
-            }
+            .padding(.trailing, 16)
+            .padding(.top, 60)
         }
         .sheet(isPresented: $bookmarkSheetTggle) {
             BookMarkSlider(lat: $lat, long: $long)
+        }
+        .sheet(isPresented: $showRouteSheet) {
+            RouteSimSheet(routeSimulator: routeSimulator, mapRegion: $mapRegion, isPresented: $showRouteSheet)
         }
     }
     
@@ -159,6 +219,64 @@ struct LocSimView: View {
             style: .iOS17AppleMusic,
             haptic: .success
         )
+    }
+    
+    // MARK: - Address Search
+    private func searchAddress() {
+        guard !searchText.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        isSearching = true
+        searchResults = []
+        
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = searchText
+        
+        let search = MKLocalSearch(request: request)
+        search.start { response, error in
+            DispatchQueue.main.async {
+                isSearching = false
+                if let response = response {
+                    searchResults = response.mapItems
+                } else {
+                    UIApplication.shared.alert(body: "No results found for '\(searchText)'")
+                }
+            }
+        }
+    }
+    
+    private func selectSearchResult(_ item: MKMapItem) {
+        let coordinate = item.placemark.coordinate
+        let altitudeValue = Double(altitude) ?? 0.0
+        
+        // Move the map to the selected location
+        let region = MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        )
+        mapRegion = region
+        
+        // Start simulation at the selected location
+        startSimulation(at: coordinate, altitude: altitudeValue)
+        
+        // Close search UI
+        showSearchBar = false
+        searchText = ""
+        searchResults = []
+    }
+    
+    // MARK: - Modern UI Helpers
+    private func controlIcon(systemName: String, color: Color = .indigo) -> some View {
+        Image(systemName: systemName)
+            .font(.system(size: 20, weight: .bold))
+            .foregroundColor(.white)
+            .frame(width: 50, height: 50)
+            .background(color.opacity(0.9))
+            .background(.ultraThinMaterial)
+            .clipShape(Circle())
+            .shadow(color: color.opacity(0.3), radius: 10, x: 0, y: 5)
+            .overlay(
+                Circle()
+                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+            )
     }
 }
 

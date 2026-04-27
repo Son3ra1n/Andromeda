@@ -1,6 +1,6 @@
 //
 //  CoordTransform.swift
-//  Geranium
+//  Andromeda
 //
 //  Created by acg7878 on 28.07.25.
 //

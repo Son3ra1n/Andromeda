@@ -1,8 +1,8 @@
 //
 //  LocSimManager.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by Constantin Clerc on 12.11.2022.
+//  Developed by son3ra1n.
 //
 
 import Foundation

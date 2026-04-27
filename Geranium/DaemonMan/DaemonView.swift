@@ -1,8 +1,8 @@
 //
 //  DaemonView.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by Constantin Clerc on 10/12/2023.
+//  Developed by son3ra1n.
 //
 
 import SwiftUI

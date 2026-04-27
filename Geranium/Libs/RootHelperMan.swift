@@ -1,8 +1,8 @@
 //
 //  RootHelperMan.swift
-//  Geranium
+//  Andromeda
 //
-//  Created by cclerc on 18.12.23.
+//  Developed by son3ra1n.
 //
 
 // thanks sourceloc

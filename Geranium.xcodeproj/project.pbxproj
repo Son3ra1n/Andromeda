@@ -40,6 +40,8 @@
 		79DF26992B31C90C005D81D2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF26982B31C90C005D81D2 /* WelcomeView.swift */; };
 		79FDECC92B878F4700B2DFB0 /* NotifHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDECC82B878F4700B2DFB0 /* NotifHelp.swift */; };
 		F82C58042E37786D00F76DFA /* CoordTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82C58032E37786D00F76DFA /* CoordTransform.swift */; };
+		F82C58062E37790000F76DFA /* RouteSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82C58052E37790000F76DFA /* RouteSimulator.swift */; };
+		F82C58082E37790100F76DFA /* RouteSimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82C58072E37790100F76DFA /* RouteSimView.swift */; };
 		FAA456D52B265FEA00FC7287 /* GeraniumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA456D42B265FEA00FC7287 /* GeraniumApp.swift */; };
 		FAA456D72B265FEA00FC7287 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA456D62B265FEA00FC7287 /* ContentView.swift */; };
 		FAA456D92B265FEC00FC7287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA456D82B265FEC00FC7287 /* Assets.xcassets */; };
@@ -128,6 +130,8 @@
 		79DF26982B31C90C005D81D2 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		79FDECC82B878F4700B2DFB0 /* NotifHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifHelp.swift; sourceTree = "<group>"; };
 		F82C58032E37786D00F76DFA /* CoordTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordTransform.swift; sourceTree = "<group>"; };
+		F82C58052E37790000F76DFA /* RouteSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSimulator.swift; sourceTree = "<group>"; };
+		F82C58072E37790100F76DFA /* RouteSimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSimView.swift; sourceTree = "<group>"; };
 		FAA456D12B265FEA00FC7287 /* Geranium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geranium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA456D42B265FEA00FC7287 /* GeraniumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeraniumApp.swift; sourceTree = "<group>"; };
 		FAA456D62B265FEA00FC7287 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				799488A52B347E2C00AFFDCF /* LocSimManager.swift */,
 				799488A72B347E2F00AFFDCF /* LocSimPrivateHeaders.h */,
 				7989FD022B347EEA00FBAB8D /* LocSimView.swift */,
+				F82C58052E37790000F76DFA /* RouteSimulator.swift */,
+				F82C58072E37790100F76DFA /* RouteSimView.swift */,
 			);
 			path = LocSim;
 			sourceTree = "<group>";
@@ -588,6 +594,8 @@
 				FAA457302B2666F300FC7287 /* CleanerView.swift in Sources */,
 				79C28EF92B3F5ED800050A42 /* ByeTimeHelper.swift in Sources */,
 				799D42462B553AF1001867E0 /* CustomPaths.swift in Sources */,
+				F82C58062E37790000F76DFA /* RouteSimulator.swift in Sources */,
+				F82C58082E37790100F76DFA /* RouteSimView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,7 +655,7 @@
 				DEVELOPMENT_TEAM = 7G89J82G2A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bookmark Location in Geranium/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Bookmark Location in Geranium";
+				INFOPLIST_KEY_CFBundleDisplayName = "Andromeda Bookmark";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -656,7 +664,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "live.cclerc.geranium.Bookmark-Location-in-Geranium";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.son3ra1n.andromeda.bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -675,7 +683,7 @@
 				DEVELOPMENT_TEAM = 7G89J82G2A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bookmark Location in Geranium/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Bookmark Location in Geranium";
+				INFOPLIST_KEY_CFBundleDisplayName = "Andromeda Bookmark";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -684,7 +692,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "live.cclerc.geranium.Bookmark-Location-in-Geranium";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.son3ra1n.andromeda.bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -828,7 +836,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Geranium/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Geranium;
+				INFOPLIST_KEY_CFBundleDisplayName = Andromeda;
+				INFOPLIST_KEY_CFBundleDisplayName = Andromeda;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Enabling location for Geranium makes it possible for the app to display your location on the map.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This will allow the app to display your location on the LocSim map.";
@@ -844,7 +853,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = live.cclerc.geranium;
+				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromeda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Geranium/Geranium-Bringing-Header.h";
@@ -867,7 +876,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Geranium/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Geranium;
+				INFOPLIST_KEY_CFBundleDisplayName = Andromeda;
+				INFOPLIST_KEY_CFBundleDisplayName = Andromeda;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Enabling location for Geranium makes it possible for the app to display your location on the map.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This will allow the app to display your location on the LocSim map.";
@@ -883,7 +893,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = live.cclerc.geranium;
+				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromeda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Geranium/Geranium-Bringing-Header.h";
@@ -903,7 +913,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = live.cclerc.GeraniumTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromedaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -923,7 +933,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = live.cclerc.GeraniumTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromedaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -941,7 +951,7 @@
 				DEVELOPMENT_TEAM = 7G89J82G2A;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = live.cclerc.GeraniumUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromedaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -959,7 +969,7 @@
 				DEVELOPMENT_TEAM = 7G89J82G2A;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = live.cclerc.GeraniumUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromedaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
