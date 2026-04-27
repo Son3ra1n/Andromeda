@@ -50,9 +50,11 @@
 ## 🎥 Demo Video
 
 <div align="center">
-  <p>Watch Andromeda's realistic route simulation in action:</p>
+  <p>Click the image below to watch Andromeda's realistic route simulation in action:</p>
 
-  <video src="https://github.com/Sonerbt/Andromeda/raw/main/Media/route_simulation.mov" width="400" controls></video>
+  [![Watch the video](Media/locsim_main.png)](https://github.com/Sonerbt/Andromeda/raw/main/Media/route_simulation.mov)
+
+  *(Clicking will open the video in a new tab)*
 </div>
 
 ---
