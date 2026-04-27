@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/son3ra1n/Andromeda/main/Andromeda/Assets.xcassets/AppIcon.appiconset/andromeda_1024.png" width="150" style="border-radius: 32px;" />
+<img src="https://raw.githubusercontent.com/Sonerbt/Andromeda/main/Geranium/Assets.xcassets/AppIcon.appiconset/geranium.png" width="150" style="border-radius: 32px;" />
 
 # Andromeda
 ### The Ultimate iOS Utility — by son3ra1n
