@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA222222222222220000BEEF /* GeraniumRootHelper in Resources */ = {isa = PBXBuildFile; fileRef = AA111111111111110000CAFE /* GeraniumRootHelper */; };
 		790301C12B377EA70044E30A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 790301C02B377EA70044E30A /* Localizable.xcstrings */; };
 		790301C52B3794480044E30A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790301C42B3794480044E30A /* SettingsView.swift */; };
 		790301C72B3794FF0044E30A /* DaemonWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790301C62B3794FF0044E30A /* DaemonWelcomeView.swift */; };
@@ -92,6 +93,25 @@
 		};
 /* End PBXCopyFilesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AA333333333333330000BEEF /* Copy RootHelper */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Geranium/GeraniumRootHelper",
+			);
+			name = "Copy RootHelper";
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(WRAPPER_NAME)/GeraniumRootHelper",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp \"${SRCROOT}/Geranium/GeraniumRootHelper\" \"${TARGET_BUILD_DIR}/${WRAPPER_NAME}/GeraniumRootHelper\"\nchmod +x \"${TARGET_BUILD_DIR}/${WRAPPER_NAME}/GeraniumRootHelper\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXFileReference section */
 		790301BA2B37747A0044E30A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		790301BC2B3774F90044E30A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -118,6 +138,7 @@
 		7989FD052B3486B100FBAB8D /* CustomMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapView.swift; sourceTree = "<group>"; };
 		7989FD072B34894400FBAB8D /* BookMarkSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkSlider.swift; sourceTree = "<group>"; };
 		7989FD092B348A0200FBAB8D /* BookMarkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkHelper.swift; sourceTree = "<group>"; };
+		AA111111111111110000CAFE /* GeraniumRootHelper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = GeraniumRootHelper; sourceTree = "<group>"; };
 		799488A52B347E2C00AFFDCF /* LocSimManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocSimManager.swift; sourceTree = "<group>"; };
 		799488A72B347E2F00AFFDCF /* LocSimPrivateHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocSimPrivateHeaders.h; sourceTree = "<group>"; };
 		799D42452B553AF1001867E0 /* CustomPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaths.swift; sourceTree = "<group>"; };
@@ -395,6 +416,7 @@
 				FAA456CE2B265FEA00FC7287 /* Frameworks */,
 				FAA456CF2B265FEA00FC7287 /* Resources */,
 				796072ED2B4F4FAE00737B5D /* Embed Foundation Extensions */,
+				AA333333333333330000BEEF /* Copy RootHelper */,
 			);
 			buildRules = (
 			);
@@ -533,6 +555,7 @@
 				79D7891F2B41BEA600FEBD32 /* Flore.png in Resources */,
 				79D7891D2B41BDE700FEBD32 /* Bouquet.png in Resources */,
 				7956C4542B4DF122004D3A1A /* Beta.png in Resources */,
+				AA111111111111110000BEEF /* GeraniumRootHelper in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

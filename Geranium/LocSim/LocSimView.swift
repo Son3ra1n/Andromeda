@@ -26,16 +26,8 @@ struct LocSimView: View {
     @State private var isSearching: Bool = false
     @State private var mapRegion: MKCoordinateRegion? = nil
     var body: some View {
-            if #available(iOS 16.0, *) {
-                NavigationStack {
-                    LocSimMainView()
-                }
-            } else {
-                NavigationView {
-                    LocSimMainView()
-                }
-            }
-        }
+        LocSimMainView()
+    }
     @ViewBuilder
         private func LocSimMainView() -> some View {
             ZStack(alignment: .topTrailing) {
@@ -44,7 +36,12 @@ struct LocSimView: View {
                     .onAppear {
                         CLLocationManager().requestAlwaysAuthorization()
                     }
-                    .ignoresSafeArea()
+                    .onChange(of: tappedCoordinate) { newCoord in
+                        guard let coord = newCoord else { return }
+                        let altitudeValue = Double(altitude) ?? 0.0
+                        startSimulation(at: coord.coordinate, altitude: altitudeValue)
+                    }
+                    .ignoresSafeArea(.all, edges: [.top, .leading, .trailing])
                 
                 // MARK: - Address Search Overlay (Top)
                 if showSearchBar {
