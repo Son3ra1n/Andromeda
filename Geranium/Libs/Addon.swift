@@ -193,7 +193,8 @@ extension UIApplication {
     }
     
     func present(alert: UIAlertController) {
-        if var topController = self.windows.first?.rootViewController {
+        if let windowScene = self.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           var topController = windowScene.windows.first?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
@@ -202,21 +203,22 @@ extension UIApplication {
     }
     
     func respringDeprecated() {
-        let app = self
         // Credit to Amy While for this respring bug
-        guard let window = app.windows.first else { return }
-        while true {
-            window.snapshotView(afterScreenUpdates: false)
+        if let windowScene = self.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            while true {
+                window.snapshotView(afterScreenUpdates: false)
+            }
         }
     }
 }
 
 func checkSandbox() -> Bool {
     let fileManager = FileManager.default
-    fileManager.createFile(atPath: "/var/mobile/geraniumtemp", contents: nil)
-    if fileManager.fileExists(atPath: "/var/mobile/geraniumtemp") {
+    fileManager.createFile(atPath: "/var/mobile/andromedatemp", contents: nil)
+    if fileManager.fileExists(atPath: "/var/mobile/andromedatemp") {
         do {
-            try fileManager.removeItem(atPath: "/var/mobile/geraniumtemp")
+            try fileManager.removeItem(atPath: "/var/mobile/andromedatemp")
         } catch {
             print("Failed to remove sandbox check file")
         }

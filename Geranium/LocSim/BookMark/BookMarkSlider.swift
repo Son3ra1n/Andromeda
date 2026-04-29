@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AlertKit
+import CoreLocation
 
 struct Bookmark: Identifiable {
     var id = UUID()
@@ -22,8 +23,11 @@ struct BookMarkSlider: View {
     @State private var name = ""
     @State private var result: Bool = false
     @AppStorage("isMika") var isMika: Bool = false
-    @State private var bookmarks: [Bookmark] = BookMarkRetrieve().map {
-        Bookmark(name: $0["name"] as! String, lat: $0["lat"] as! Double, long: $0["long"] as! Double)
+    @State private var bookmarks: [Bookmark] = BookMarkRetrieve().compactMap { dict in
+        guard let name = dict["name"] as? String,
+              let lat = dict["lat"] as? Double,
+              let long = dict["long"] as? Double else { return nil }
+        return Bookmark(name: name, lat: lat, long: long)
     }
 
     var body: some View {
@@ -32,7 +36,7 @@ struct BookMarkSlider: View {
                 ForEach(bookmarks) { bookmark in
                     Button(action: {
                         close()
-                        LocSimManager.startLocSim(location: .init(latitude: bookmark.lat, longitude: bookmark.long))
+                        LocSimManager.startLocSim(location: CLLocation(coordinate: CLLocationCoordinate2D(latitude: bookmark.lat, longitude: bookmark.long), altitude: 0, horizontalAccuracy: 5, verticalAccuracy: 5, timestamp: Date()))
                         AlertKitAPI.present(
                             title: "Started !",
                             icon: .done,
@@ -68,8 +72,11 @@ struct BookMarkSlider: View {
                             ) { enteredText, _ in
                                 let bookmarkName = enteredText ?? "Unknown"
                                 result = BookMarkSave(lat: lat, long: long, name: bookmarkName)
-                                bookmarks = BookMarkRetrieve().map {
-                                    Bookmark(name: $0["name"] as! String, lat: $0["lat"] as! Double, long: $0["long"] as! Double)
+                                bookmarks = BookMarkRetrieve().compactMap { dict in
+                                    guard let name = dict["name"] as? String,
+                                          let lat = dict["lat"] as? Double,
+                                          let long = dict["long"] as? Double else { return nil }
+                                    return Bookmark(name: name, lat: lat, long: long)
                                 }
                             }
 
@@ -77,8 +84,11 @@ struct BookMarkSlider: View {
                             UIApplication.shared.confirmAlert(title: "Your position is set to 0", body: "Are you sure you want to continue? This might be a mistake; try picking somewhere on the map", onOK: {
                                 UIApplication.shared.TextFieldAlert(title: "Enter bookmark name", textFieldPlaceHolder: "Example...", completion: { enteredText, _ in
                                     result = BookMarkSave(lat: lat, long: long, name: enteredText ?? "Unknown")
-                                    bookmarks = BookMarkRetrieve().map {
-                                        Bookmark(name: $0["name"] as! String, lat: $0["lat"] as! Double, long: $0["long"] as! Double)
+                                    bookmarks = BookMarkRetrieve().compactMap { dict in
+                                        guard let name = dict["name"] as? String,
+                                              let lat = dict["lat"] as? Double,
+                                              let long = dict["long"] as? Double else { return nil }
+                                        return Bookmark(name: name, lat: lat, long: long)
                                     }
                                     AlertKitAPI.present(
                                         title: "Added !",
@@ -119,8 +129,11 @@ struct BookMarkSlider: View {
                 if isThereAnyMika(), !isMika {
                     UIApplication.shared.confirmAlert(title:"Mika's LocSim bookmarks/records detected.", body: "Do you want to import them ?", onOK: {
                         importMika()
-                        bookmarks = BookMarkRetrieve().map {
-                            Bookmark(name: $0["name"] as! String, lat: $0["lat"] as! Double, long: $0["long"] as! Double)
+                        bookmarks = BookMarkRetrieve().compactMap { dict in
+                            guard let name = dict["name"] as? String,
+                                  let lat = dict["lat"] as? Double,
+                                  let long = dict["long"] as? Double else { return nil }
+                            return Bookmark(name: name, lat: lat, long: long)
                         }
                         isMika.toggle()
                     }, noCancel: false, yes: true)

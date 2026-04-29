@@ -48,7 +48,7 @@ struct HomeView: View {
                         // MARK: - Feature Stats Card
                         HStack(spacing: 15) {
                             statItem(title: "Status", value: "Verified", icon: "checkmark.shield.fill", color: .green)
-                            statItem(title: "Version", value: "2.5.0-Pro", icon: "cpu", color: .indigo)
+                            statItem(title: "Version", value: "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?")-Pro", icon: "cpu", color: .indigo)
                         }
                         .padding(.horizontal)
                         
@@ -88,7 +88,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationBarHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { isDebugSheetOn.toggle() }) {

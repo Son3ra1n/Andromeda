@@ -53,6 +53,12 @@
 		FAA457292B26668900FC7287 /* DaemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA457282B26668900FC7287 /* DaemonView.swift */; };
 		FAA457302B2666F300FC7287 /* CleanerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4572F2B2666F300FC7287 /* CleanerView.swift */; };
 		FAA457322B2667CB00FC7287 /* SuperviseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA457312B2667CB00FC7287 /* SuperviseView.swift */; };
+		BB110001000000010000AA01 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB110001000000010000BB01 /* FavoritesView.swift */; };
+		BB110002000000020000AA02 /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB110002000000020000BB02 /* JoystickView.swift */; };
+		BB110003000000030000AA03 /* StorageAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB110003000000030000BB03 /* StorageAnalyzerView.swift */; };
+		BB110004000000040000AA04 /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB110004000000040000BB04 /* GPXParser.swift */; };
+		BB110005000000050000AA05 /* AppProfilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB110005000000050000BB05 /* AppProfilesView.swift */; };
+		BB110007000000070000AA07 /* FloatingQuickMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB110007000000070000BB07 /* FloatingQuickMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +175,12 @@
 		FAA457282B26668900FC7287 /* DaemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaemonView.swift; sourceTree = "<group>"; };
 		FAA4572F2B2666F300FC7287 /* CleanerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanerView.swift; sourceTree = "<group>"; };
 		FAA457312B2667CB00FC7287 /* SuperviseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperviseView.swift; sourceTree = "<group>"; };
+		BB110001000000010000BB01 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geranium/LocSim/FavoritesView.swift"; sourceTree = SOURCE_ROOT; };
+		BB110002000000020000BB02 /* JoystickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geranium/LocSim/JoystickView.swift"; sourceTree = SOURCE_ROOT; };
+		BB110003000000030000BB03 /* StorageAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geranium/Cleaner/StorageAnalyzerView.swift"; sourceTree = SOURCE_ROOT; };
+		BB110004000000040000BB04 /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geranium/LocSim/GPXParser.swift"; sourceTree = SOURCE_ROOT; };
+		BB110005000000050000BB05 /* AppProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geranium/LocSim/AppProfilesView.swift"; sourceTree = SOURCE_ROOT; };
+		BB110007000000070000BB07 /* FloatingQuickMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geranium/LocSim/FloatingQuickMenu.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,6 +631,13 @@
 				799D42462B553AF1001867E0 /* CustomPaths.swift in Sources */,
 				F82C58062E37790000F76DFA /* RouteSimulator.swift in Sources */,
 				F82C58082E37790100F76DFA /* RouteSimView.swift in Sources */,
+				BB110001000000010000AA01 /* FavoritesView.swift in Sources */,
+				BB110002000000020000AA02 /* JoystickView.swift in Sources */,
+				BB110003000000030000AA03 /* StorageAnalyzerView.swift in Sources */,
+				BB110004000000040000AA04 /* GPXParser.swift in Sources */,
+				BB110005000000050000AA05 /* AppProfilesView.swift in Sources */,
+				BB110007000000070000AA07 /* FloatingQuickMenu.swift in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,7 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 2.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromeda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -915,7 +934,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 2.5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.son3ra1n.andromeda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

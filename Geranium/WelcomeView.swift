@@ -16,7 +16,7 @@ struct WelcomeView: View {
     var body: some View {
         List {
             Section(header: Text("Setup")) {
-                Text("Welcome to Andromeda, a toolbox for TrollStore that allows you to disable some daemons, simulate your location, clean your phone's storage and other. Developed by son3ra1n.")
+                Text("Welcome to Andromeda, a powerful iOS toolbox for TrollStore. Simulate your location with joystick & routes, manage daemons, clean storage with detailed reports, and more. Developed by son3ra1n.")
             }
             if getDeviceCode() == "iPhone8,4" {
                 Section(header: Text("Hi ! SE 1 User")) {
@@ -58,9 +58,13 @@ struct WelcomeView: View {
             }
         }
         .navigationTitle("Welcome!")
-        .navigationBarItems(trailing: Button("Dismiss") {
-            close()
-        })
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Dismiss") {
+                    close()
+                }
+            }
+        }
         .environment(\.defaultMinListRowHeight, 50)
         .interactiveDismissDisabled()
     }

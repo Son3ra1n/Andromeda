@@ -15,6 +15,7 @@ struct CleanerView: View {
     @State var wannaReboot: Bool = false
     @State var customPathSheet: Bool = false
     @State var needHelpWithMyNotifs: Bool = false
+    @State var storageAnalyzerSheet: Bool = false
     @State var shouldIGetSizes = AppSettings().getSizes
     
     // User Selection
@@ -85,8 +86,8 @@ struct CleanerView: View {
                 }
                 else {
                     Button("Clean !", action: {
-                        UIApplication.shared.confirmAlert(title: "Selected options", body: "watefuk", onOK: {
-                            print("nothing selected ?")
+                        UIApplication.shared.confirmAlert(title: "Nothing Selected", body: "Please select at least one option to clean.", onOK: {
+                            print("nothing selected")
                         }, noCancel: false, yes: true)
                     })
                     .padding(10)
@@ -200,37 +201,9 @@ struct CleanerView: View {
                         performCleanup()
                     }
             }
-            // Success !
-            if successDetected, resultView{
-                Image(systemName: "checkmark")
-                    .foregroundColor(.green)
-                    .onAppear {
-                        successVibrate()
-                    }
-                Text("Done !")
-                    .foregroundStyle(.green)
-                Button("Exit", action: {
-                    withAnimation {
-                        progressAmount = 0
-                        if !appSettings.keepCheckBoxesC {
-                            safari = false
-                            appCaches = false
-                            otaCaches = false
-                            leftoverCaches = false
-                            custompathselect = false
-                        }
-                        isLowSize = false
-                        successDetected.toggle()
-                        resultView.toggle()
-                        defaultView.toggle()
-                        wannaReboot.toggle()
-                    }
-                })
-                .padding(10)
-                .background(.green)
-                .cornerRadius(8)
-                .foregroundColor(.black)
-                .transition(.scale)
+            // Success - Cleaning Report
+            if successDetected, resultView {
+                cleaningReportView()
             }
             // Error...
             if errorDetected, resultView {
@@ -303,6 +276,19 @@ struct CleanerView: View {
                     }
                 }
             }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    storageAnalyzerSheet.toggle()
+                }) {
+                    if defaultView {
+                        Image(systemName: "chart.pie.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 22, height: 22)
+                            .foregroundColor(.indigo)
+                    }
+                }
+            }
         }
         .sheet(isPresented: $customPathSheet) {
             CustomPaths()
@@ -314,6 +300,9 @@ struct CleanerView: View {
         }
         .sheet(isPresented: $needHelpWithMyNotifs) {
             NotifHelp()
+        }
+        .sheet(isPresented: $storageAnalyzerSheet) {
+            StorageAnalyzerView()
         }
     }
     func performCleanup() {
@@ -336,6 +325,136 @@ struct CleanerView: View {
                     resultView.toggle()
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func cleaningReportView() -> some View {
+        let totalCleaned = (safariCacheSize + GlobalCacheSize + OTACacheSize + leftOverCacheSize + customPathsSize) / (1024 * 1024)
+        
+        ScrollView {
+            VStack(spacing: 20) {
+                // Animated Checkmark
+                ZStack {
+                    Circle()
+                        .fill(Color.green.opacity(0.15))
+                        .frame(width: 100, height: 100)
+                    Circle()
+                        .fill(Color.green.opacity(0.3))
+                        .frame(width: 70, height: 70)
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 50))
+                        .foregroundColor(.green)
+                }
+                .onAppear { successVibrate() }
+                
+                Text("Cleaning Complete!")
+                    .font(.system(size: 22, weight: .bold, design: .rounded))
+                
+                VStack(spacing: 4) {
+                    Text(String(format: "%.1f", totalCleaned))
+                        .font(.system(size: 48, weight: .black, design: .rounded))
+                        .foregroundStyle(
+                            LinearGradient(colors: [.green, .mint], startPoint: .leading, endPoint: .trailing)
+                        )
+                    Text("MB Freed")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.secondary)
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(.ultraThinMaterial)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.green.opacity(0.3), lineWidth: 1)
+                )
+                .padding(.horizontal)
+                
+                // Category Breakdown
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("BREAKDOWN")
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundColor(.secondary)
+                        .padding(.leading, 4)
+                    
+                    if safari { cleanReportRow(icon: "safari", label: "Safari Caches", size: safariCacheSize, color: .blue) }
+                    if appCaches { cleanReportRow(icon: "app.dashed", label: "General Caches", size: GlobalCacheSize, color: .orange) }
+                    if otaCaches { cleanReportRow(icon: "restart.circle", label: "OTA Updates", size: OTACacheSize, color: .purple) }
+                    if leftoverCaches { cleanReportRow(icon: "app.badge.checkmark", label: "App Leftovers", size: leftOverCacheSize, color: .pink) }
+                    if custompathselect { cleanReportRow(icon: "folder", label: "Custom Paths", size: customPathsSize, color: .indigo) }
+                }
+                .padding()
+                .background(.ultraThinMaterial)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                )
+                .padding(.horizontal)
+                
+                // Done Button
+                Button(action: {
+                    withAnimation {
+                        progressAmount = 0
+                        if !appSettings.keepCheckBoxesC {
+                            safari = false; appCaches = false; otaCaches = false
+                            leftoverCaches = false; custompathselect = false
+                        }
+                        isLowSize = false
+                        successDetected.toggle(); resultView.toggle()
+                        defaultView.toggle(); wannaReboot.toggle()
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: "arrow.counterclockwise")
+                        Text("Done")
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(LinearGradient(colors: [.green, .mint], startPoint: .leading, endPoint: .trailing))
+                    .cornerRadius(16)
+                    .shadow(color: .green.opacity(0.3), radius: 8, x: 0, y: 4)
+                }
+                .padding(.horizontal)
+            }
+            .padding(.top, 30)
+        }
+    }
+    
+    private func cleanReportRow(icon: String, label: String, size: Double, color: Color) -> some View {
+        let sizeMB = size / (1024 * 1024)
+        return HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 16))
+                .foregroundColor(color)
+                .frame(width: 30)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(label)
+                    .font(.system(size: 14, weight: .medium))
+                
+                GeometryReader { geo in
+                    let maxSize = max(safariCacheSize, GlobalCacheSize, OTACacheSize, leftOverCacheSize, customPathsSize, 1)
+                    let barWidth = (size / maxSize) * geo.size.width
+                    
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(color.opacity(0.3))
+                        .frame(height: 6)
+                        .overlay(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(color)
+                                .frame(width: max(barWidth, 4), height: 6)
+                        }
+                }
+                .frame(height: 6)
+            }
+            
+            Text(String(format: "%.1f MB", sizeMB))
+                .font(.system(size: 13, weight: .semibold, design: .monospaced))
+                .foregroundColor(.secondary)
         }
     }
 }

@@ -22,6 +22,7 @@ struct RouteSimSheet: View {
     @State private var activeField: ActiveField = .none
     @State private var routeReady: Bool = false
     @State private var speedMultiplier: Double = 1.0
+    @State private var showGPXPicker: Bool = false
     
     enum ActiveField {
         case none, start, end
@@ -206,6 +207,42 @@ struct RouteSimSheet: View {
                     }
                     .opacity(routeSimulator.isSimulating ? 1 : 0)
                     .disabled(!routeSimulator.isSimulating)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { showGPXPicker = true }) {
+                        Image(systemName: "doc.badge.plus")
+                            .foregroundColor(.indigo)
+                            .font(.title3)
+                    }
+                    .opacity(routeSimulator.isSimulating ? 0 : 1)
+                    .disabled(routeSimulator.isSimulating)
+                }
+            }
+            .sheet(isPresented: $showGPXPicker) {
+                GPXDocumentPicker { url in
+                    guard let result = GPXParser.parse(url: url), !result.isEmpty else {
+                        UIApplication.shared.alert(body: "Failed to parse GPX file or file is empty.")
+                        return
+                    }
+                    
+                    let coords = result.allCoordinates
+                    if coords.count >= 2 {
+                        // Use first and last as start/end
+                        startCoord = coords.first
+                        endCoord = coords.last
+                        startText = "GPX Start"
+                        endText = "GPX End (\(coords.count) points)"
+                        
+                        // Fit map to route
+                        let centerLat = coords.map { $0.latitude }.reduce(0, +) / Double(coords.count)
+                        let centerLon = coords.map { $0.longitude }.reduce(0, +) / Double(coords.count)
+                        mapRegion = MKCoordinateRegion(
+                            center: CLLocationCoordinate2D(latitude: centerLat, longitude: centerLon),
+                            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                        )
+                        
+                        AlertKitAPI.present(title: "GPX Loaded! \(coords.count) pts", icon: .done, style: .iOS17AppleMusic, haptic: .success)
+                    }
                 }
             }
         }

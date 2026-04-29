@@ -214,7 +214,7 @@ struct SettingsView: View {
                     HStack {
                         Text("App")
                         Spacer()
-                        Text("Andromeda v2.5.0")
+                        Text("Andromeda v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?")")
                             .foregroundColor(.secondary)
                     }
                     HStack {
@@ -224,7 +224,9 @@ struct SettingsView: View {
                             .foregroundColor(.indigo)
                     }
                     Button(action: {
-                        UIApplication.shared.open(URL(string: "https://github.com/son3ra1n/Andromeda")!)
+                        if let url = URL(string: "https://github.com/son3ra1n/Andromeda") {
+                            UIApplication.shared.open(url)
+                        }
                     }) {
                         HStack {
                             Text("Source Code")
